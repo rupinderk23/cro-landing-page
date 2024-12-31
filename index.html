@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital@0;1&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -32,6 +33,7 @@
           },
           boxShadow: {
             'custom': '0 0 30px  rgba(0, 0, 0, 0.3)',
+            'btn': '0 0 20px  rgba(0, 0, 0, 0.15)',
           },
         }
       }
@@ -52,7 +54,7 @@
             <div class="font-semibold text-black">Get a Free Audit Report of the website on a discovery call</div>
           </div>
         </div>
-        <img src="images/gradient.png" class="absolute top-1/2 z-0 max-w-[1300px]" alt="">
+        <img src="images/gradient.png" class="absolute top-1/2 z-0 max-w-[1300px] opacity-70" alt="">
       </div>
     </section>
     <section class="py-24">
@@ -73,21 +75,21 @@
       <div class="max-w-[1180px] mx-auto bg-white rounded-[40px] shadow-custom text-center p-16">
           <div class="max-w-[980px] mx-auto mb-10">
             <h2 class="inline-block text-green leading-tight text-[48px] font-circular font-medium relative after:content-[''] after:absolute after:w-[101%] after:h-[25px] after:bg-[#13880020] after:bottom-0 after:-left-1 mb-6">Why Conversion Rate Optimization matters.</h2>
-            <div class="text-lg text-left font-medium flex items-start gap-3">Every dollar that you invest in CRO today will make you $100 over the next 12 months… and then another $100 the year after that… and then another $100 the year after that.</div>
-            <div class="text-lg text-left font-medium flex items-start gap-3">With a high-converting store, you’re going to see a sharp and immediate drop in customer acquisition costs, coupled with a significant increase in your average order value. Now, both of these effects combined will make your ad campaigns truly work for you.  </div>
+            <div class="text-xl text-left font-medium leading-normal">Every dollar that you invest in CRO today will make you <span class="relative font-bold after:content-[''] after:absolute after:w-[98%] after:h-[10px] after:bg-[#ED9C0040] after:bottom-0 after:left-0 z-10 after:-z-10"> $100 over the next 12 months…</span> and then another $100 the year after that… and then another $100 the year after that.</div>
+            <div class="text-xl text-left font-medium mt-4 leading-normal">With a high-converting store, you’re going to see a sharp and immediate drop in customer acquisition costs, coupled with a significant increase in your average order value. Now, both of these effects combined will make your ad campaigns truly work for you.  </div>
           </div>
-          <img src="images/chart.png" alt="">
+          <img src="images/chart.png" alt="" class="rounded-3xl">
       </div>
     </section>
     <section class="py-24">
       <div class="max-w-[1180px] mx-auto text-center">
         <h2 class="text-[48px] font-circular leading-tight font-medium text-center">Is your Website Guilty of These <span class="text-red text-center">  Mistakes?</span></h2>
         <div class="max-w-[500px] flex flex-col gap-3 mx-auto mt-8">
-          <p class="text-xl font-medium flex items-start gap-3"><img src="images/cross.png" class="mt-1" alt="">High Traffic, but Low Sales?</p>
-          <p class="text-xl font-medium flex items-start gap-3"><img src="images/cross.png" class="mt-1" alt="">High Cost Per Acquisition (CPA)</p>
-          <p class="text-xl font-medium flex items-start gap-3"><img src="images/cross.png" class="mt-1" alt="">Abandoned Carts pulling up</p>
-          <p class="text-xl font-medium flex items-start gap-3"><img src="images/cross.png" class="mt-1" alt="">Visitors leaving without exploring your products</p>
-          <p class="text-xl font-medium flex items-start gap-3"><img src="images/cross.png" class="mt-1" alt="">Low average order value</p>
+          <p class="text-2xl font-semibold text-start flex items-start gap-3"><img src="images/cross.png" class="mt-2" alt="">High Traffic, but Low Sales?</p>
+          <p class="text-2xl font-semibold text-start flex items-start gap-3"><img src="images/cross.png" class="mt-2" alt="">High Cost Per Acquisition (CPA)</p>
+          <p class="text-2xl font-semibold text-start flex items-start gap-3"><img src="images/cross.png" class="mt-2" alt="">Abandoned Carts pulling up</p>
+          <p class="text-2xl font-semibold text-start flex items-start gap-3"><img src="images/cross.png" class="mt-2" alt="">Visitors leaving without exploring your products</p>
+          <p class="text-2xl font-semibold text-start flex items-start gap-3"><img src="images/cross.png" class="mt-2" alt="">Low average order value</p>
         </div>
         <div class="font-extrabold text-2xl inline-block px-3 bg-[#DD010130] mt-10">These are the signs of an unoptimised website. You are failing to convert visitors into buyers.</div>
       </div>
@@ -105,7 +107,7 @@
               <div class="font-semibold text-2xl text-left">Your conversion rate is just 1% That’s 200 Sales</div>
             </div>
           </div>
-          <div class="text-[32px] text-center leading-tight mt-14">Now if we boost your conversion rate to <span class="text-yellow"> 3%</span>, that’s 600 Sales - <br/>
+          <div class="text-3xl font-circular text-center leading-tight traking-wide mt-14">Now if we boost your conversion rate to <span class="text-yellow"> 3%</span>, that’s 600 Sales - <br/>
             <span class="text-yellow">3X increase in Revenue</span> Without any extra ad spend.
             </div>
       </div>
@@ -119,8 +121,35 @@
             <div class="font-semibold text-2xl bg-[#D4EAD1] max-w-[700px] rounded-xl p-5 mx-auto my-12">Identify Your Website Gaps & Missed Opportunities - Normal 250$, but yours <span class="text-3xl text-green"> Free Today!</span></div>
             <div class="text-2xl font-bold">Not sure, where is your website facing short? </div>
             <div class="text-xl font-medium">Our 306 point conversion checklist will reveal exactly where your ecommerce site is lacking in optimization - From design flaws to Checkout roadblocks. This checklist, usually valued at $250, is yours for free. Understand your site’s weakness, Let us help you turn them into strength.</div>
-            <a href="" class="inline-block uppercase bg-yellow text-blue rounded-full font-bold py-7 px-20 mt-12 text-xl hover:bg-blue hover:text-white transition duration-300 ease-in-out">Get Your Free Checklist Now normally $250</a>
+            <a href="" class="inline-block uppercase bg-yellow text-blue rounded-full font-bold py-7 px-20 mt-12 text-xl hover:bg-white hover:text-yellow hover:border hover:border-yellow hover:shadow-btn transition duration-300 ease-in-out">Get Your Free Checklist Now normally $250</a>
           </div> 
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="max-w-[1100px] mx-auto">
+        <h2 class="text-[48px] font-circular font-medium leading-tight text-center mb-6"> Our <span class="relative after:content-[''] after:absolute after:w-[102%] after:h-[25px] after:bg-[#ED9C0040] after:bottom-0 after:left-0 z-10 after:-z-10"> Work</span></h2>
+        <div class="grid grid-cols-2 gap-10">
+          <a href="https://bitaminnaturals.com/" target="/blank" class="border border-[#ED9C0060] hover:border-yellow hover:shadow-custom bg-white hover:bg-yellow rounded-2xl transition duration-0 hover:duration-100">
+            <div class="overflow-hidden rounded-2xl transition duration-0 hover:duration-100">
+              <img src="images/work/bitamin.jpg" class="w-full rounded-2xl transition hover:duration-100 hover:scale-105" alt="">
+            </div>
+            <div class="flex items-center justify-center font-circular p-3">Bitamin Naturals</div>
+          </a>
+          <div class="grid grid-cols-1 gap-10">
+            <a href="https://naturevit.in/" target="/blank" class="border border-[#ED9C0060] hover:border-yellow hover:shadow-custom bg-white hover:bg-yellow rounded-2xl overflow-hidden transition duration-100 hover:duration-100">
+              <div class="overflow-hidden rounded-2xl transition duration-0 hover:duration-100">
+                <img src="images/work/naturevit.jpg" class="w-full rounded-2xl transition hover:duration-100 hover:scale-105" alt="">
+              </div>
+              <div class="flex items-center justify-center font-circular p-3">Nature Vit</div>
+            </a>
+            <a href="https://hijab.shadowdubai.com/" target="/blank" class="border border-[#ED9C0060] hover:border-yellow hover:shadow-custom bg-white hover:bg-yellow rounded-2xl overflow-hidden transition duration-0 hover:duration-100">
+              <div class="overflow-hidden rounded-2xl transition duration-0 hover:duration-100">
+                <img src="images/work/hijab.jpg" class="w-full rounded-2xl transition hover:duration-100 hover:scale-105" alt="">
+              </div>
+              <div class="flex items-center justify-center font-circular p-3">Hijab Shadow Dubai</div>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -149,18 +178,63 @@
           </p>
         </div>
         <div class="text-center">
-          <a href="" class="inline-block uppercase bg-yellow text-blue rounded-full font-bold py-7 px-20 mt-12 text-xl hover:bg-blue hover:text-white transition duration-300 ease-in-out">See If You Qualify — Apply Now!</a>
+          <a href="" class="inline-block uppercase bg-yellow text-blue rounded-full font-bold py-7 px-20 mt-12 text-xl hover:bg-white hover:text-yellow hover:border hover:border-yellow hover:shadow-btn transition duration-300 ease-in-out">See If You Qualify — Apply Now!</a>
         </div>
       </div>  
     </section>
     <section class="py-24 bg-blue">
       <div class="max-w-[1180px] mx-auto text-center text-white">
-          <h2 class="text-[48px] font-circular font-medium leading-tight text-center mx-auto">How our <span class="text-yellow"> Convert Craft Framework</span> Works</h2>
+          <h2 class="text-[48px] font-circular font-medium leading-tight text-center mx-auto">How our <span class="text-yellow relative after:content-[''] after:absolute after:w-[101%] after:h-[25px] after:bg-[#ED9C0040] after:bottom-0 after:-left-1"> Convert Craft Framework</span> Works</h2>
           <h3 class="text-2xl font-circular font-normal mt-6 leading-tight text-center mx-auto">A Proven path to Higher Conversion & unstoppable Growth.</h3>
           <div class="text-xl mt-8 max-w-[980px] mx-auto"> Our Convert Craft Framework identifies Gaps, Optimize your Ecommerce site, and transform into a revenue generating Powerhouse. From uncovering hidden Issues to delivering a flawless, Conversion- Focused Design. We promise measurable results.</div>
           <h2 class="text-[48px] font-circular font-medium leading-tight text-center mx-auto mt-16">Our <span class="text-yellow"> Process</span></h2>
-          
-          <div class="text-[32px] font-circular text-center leading-tight mt-14">A Proven path to Higher <span class="relative after:content-[''] after:absolute after:w-[101%] after:h-[12px] after:bg-[#ED9C0040] after:bottom-0 after:-left-1">Conversion & unstoppable Growth.</span>
+          <div class="grid grid-cols-4 gap-3 font-normal text-[22px] mt-6">
+            <div class="flex items-center justify-center gap-4">
+              <span>Define Goals & objectives</span> <i class="fa-solid fa-angles-right text-[#ED9C0098]"></i>
+            </div>
+            <div class="flex items-center justify-center gap-4">
+              <span> Conduct Market Research</span> <i class="fa-solid fa-angles-right text-[#ED9C0098]"></i>
+            </div>
+            <div class="flex items-center justify-center gap-4">
+              <span> Create User <br/> Personas</span> <i class="fa-solid fa-angles-right text-[#ED9C0098]"></i>
+            </div>
+            <div class="flex flex-col justify-center gap-4">
+              <span>Planning Website Structure</span> <i class="fa-solid fa-angles-down text-[#ED9C0098]"></i>
+            </div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div class="flex flex-col justify-center gap-4">
+              <span> Wireframing </span> <i class="fa-solid fa-angles-down text-[#ED9C0098]"></i>
+            </div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div class="flex flex-col justify-center gap-4">
+              <span>Moodboard | Brand Story</span> <i class="fa-solid fa-angles-down text-[#ED9C0098]"></i>
+            </div>
+            <div class="self-end">
+              <div class="bg-white inline-block text-blue font-bold rounded-full py-2 px-5">Launch</div>
+            </div>
+            <div></div>
+            <div></div>
+            <div class="flex flex-col justify-center gap-4">
+              <span>Design Layout</span> <i class="fa-solid fa-angles-down text-[#ED9C0098]"></i>
+            </div>
+            <div class="flex flex-col justify-center gap-4">
+             <i class="fa-solid fa-angles-up text-[#ED9C0098]"></i> <span> Website Development</span>
+            </div>
+            <div class="flex items-center justify-center gap-4">
+              <i class="fa-solid fa-angles-left text-[#ED9C0098]"></i> <span>SEO Friendly Content Creation </span>
+            </div>
+            <div class="flex items-center justify-center gap-4">
+              <i class="fa-solid fa-angles-left text-[#ED9C0098]"></i><span> Defining Product Placements & Pricing Structure</span>
+            </div>
+            <div class="flex items-center justify-center gap-4">
+            <i class="fa-solid fa-angles-left text-[#ED9C0098]"></i> <span>UI/UX <br/> Deign Principles</span>
+            </div>
+          </div>
+          <div class="text-[32px] font-circular text-center leading-tight mt-20">A Proven path to Higher <span class="relative after:content-[''] after:absolute after:w-[101%] after:h-[12px] after:bg-[#ED9C0040] after:bottom-0 after:-left-1">Conversion & unstoppable Growth.</span>
           </div>
           <div class="grid grid-cols-2 items-start gap-5 max-w-[980px] mx-auto mt-12">
             <div class="flex justify-center flex-col gap-3">
@@ -188,19 +262,19 @@
       </div>
       <h2 class="text-[48px] mt-14 font-circular font-medium leading-tight text-center mx-auto max-w-[900px]"> Now you have 2 options </h2>
       <div class="grid grid-cols-2 gap-5 mx-auto max-w-[1100px] mt-10">
-        <div class="bg-white shadow-custom rounded-[40px] text-blue flex flex-col items-center gap-3 px-10 py-10">
+        <div class="bg-white border border-white hover:border-yellow shadow-custom rounded-[40px] text-blue flex flex-col items-center gap-3 px-10 py-10">
           <img src="images/red-home.png" alt="">
           <div class="font-circular font-medium text-2xl leading-tight mt-2">Option 1</div>
           <div class="font-medium text-xl text-center">You can forget about this and go back to doing what you were and you will be in the same situation</div>
         </div>
-        <div class="bg-white shadow-custom rounded-[40px] text-blue flex flex-col items-center gap-3 px-10 py-10">
+        <div class="bg-white border border-white hover:border-yellow shadow-custom rounded-[40px] text-blue flex flex-col items-center gap-3 px-10 py-10">
           <img src="images/green-home.png" alt="">
           <div class="font-circular font-medium text-2xl leading-tight mt-2">Option 2</div>
           <div class="font-medium text-xl text-center">Be an action taker, book a call and get a detailed roadmap from someone who has done it for  100+ e-Commerce Stores already!</div>
         </div>
       </div>
       <div class="text-center mt-16">
-        <a href="" class="inline-block uppercase bg-yellow text-blue rounded-full font-bold py-7 px-20 text-xl hover:bg-blue hover:text-white transition duration-300 ease-in-out">Book a Free Discovery Call</a>
+        <a href="" class="inline-block uppercase bg-yellow text-blue rounded-full font-bold py-7 px-20 text-xl hover:bg-white hover:text-yellow hover:border hover:border-yellow hover:shadow-btn transition duration-300 ease-in-out">Book a Free Discovery Call</a>
       </div>
     </section>
     <section class="py-24 bg-blue">
@@ -513,7 +587,7 @@
             <button
               aria-label="Previous slide"
               id="keen-slider-previous"
-              class="bg-yellow rounded-full w-10 h-10 flex items-center justify-center"
+              class="bg-yellow hover:bg-white hover:border hover:border-yellow rounded-full w-10 h-10 flex items-center justify-center"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -536,7 +610,7 @@
             <button
               aria-label="Next slide"
               id="keen-slider-next"
-              class="bg-yellow rounded-full w-10 h-10 flex items-center justify-center"
+              class="bg-yellow hover:bg-white hover:border hover:border-yellow rounded-full w-10 h-10 flex items-center justify-center"
             >
               <svg
                 class="size-5"

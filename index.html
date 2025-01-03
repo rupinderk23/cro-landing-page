@@ -128,12 +128,12 @@
              <!-- Popup Modal -->
             <div 
                 id="popup-modal" 
-                class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
+                class="hidden fixed inset-0 bg-[#00000090] flex items-center justify-center z-50">
                 <div class="bg-white rounded-2xl px-6 md:px-8 py-10 w-full mx-4 max-w-[550px] shadow-lg relative">
                     <!-- Close Button -->
                     <button 
                         id="close-popup-button" 
-                        class="absolute top-1 right-3 text-xl text-gray-400 hover:text-gray-600">
+                        class="absolute top-1 right-3 text-2xl text-gray-700 hover:text-gray-600">
                         &times;
                     </button>
                     <!-- Popup Content -->
@@ -148,32 +148,20 @@
                             <input type="text" name="name" class="mt-1 px-3 py-2 md:py-3 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-yellow focus:ring-yellow block w-full rounded-md sm:text-sm focus:ring-1" placeholder="Your Name" required />
                           </label>
                           <label class="block text-left">
-                            <!-- <span class="after:content-['*'] after:ml-0 after:text-red-500 block text-sm font-medium mb-2">
-                              Company Name
-                            </span> -->
                             <input type="text" name="name" class="mt-1 px-3 py-2 md:py-3 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-yellow focus:ring-yellow block w-full rounded-md sm:text-sm focus:ring-1" placeholder="Company Name" required />
                           </label>
                         </div>
                         <label class="block text-left mt-4">
-                          <!-- <span class="after:content-['*'] after:ml-0 after:text-red-500 block text-sm font-medium mb-2">
-                            Email
-                          </span> -->
                           <input type="email" name="email" class="mt-1 px-3 py-2 md:py-3 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-yellow focus:ring-yellow block w-full rounded-md sm:text-sm focus:ring-1" placeholder="Email id" required />
                         </label>
                         <label class="block text-left mt-4">
-                          <!-- <span class="after:content-['*'] after:ml-0 after:text-red-500 block text-sm font-medium mb-2">
-                            Mobile Number
-                          </span> -->
                           <input type="text" name="name" class="mt-1 px-3 py-2 md:py-3 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-yellow focus:ring-yellow block w-full rounded-md sm:text-sm focus:ring-1" placeholder="Mobile No." required />
                         </label>
                         <label class="block text-left mt-4">
-                          <!-- <span class="after:content-['*'] after:ml-0 after:text-red-500 block text-sm font-medium mb-2">
-                            Website
-                          </span> -->
                           <input type="text" name="name" class="mt-1 px-3 py-2 md:py-3 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-yellow focus:ring-yellow block w-full rounded-md sm:text-sm focus:ring-1" placeholder="Website" required />
                         </label>
 
-                        <button type="submit" class="inline-block uppercase bg-yellow text-blue rounded-full font-bold py-2 px-5 mt-6 text-base hover:bg-white hover:text-yellow border border-yellow hover:shadow-btn transition duration-300 ease-in-out">Get It FREE (<s class="font-normal"> $250 </s> Value)!</button>
+                        <button type="submit" class="inline-block uppercase bg-yellow text-blue rounded-full font-bold py-2 px-5 mt-6 text-base hover:bg-blue hover:text-yellow border border-yellow hover:shadow-btn transition duration-300 ease-in-out">Get It FREE (<s class="font-normal"> $250 </s> Value)!</button>
                     </form>
                 </div>
             </div>
@@ -247,7 +235,7 @@
           <h3 class="text-2xl font-circular font-normal mt-6 leading-tight text-center mx-auto">A Proven path to Higher Conversion & unstoppable Growth.</h3>
           <div class="text-lg md:text-xl mt-5 md:mt-8 max-w-[980px] mx-auto"> Our Convert Craft Framework identifies Gaps, Optimize your Ecommerce site, and transform into a revenue generating Powerhouse. From uncovering hidden Issues to delivering a flawless, Conversion- Focused Design. We promise measurable results.</div>
           <h2 class="text-3xl md:text-[48px] font-circular font-medium leading-tight text-center mx-auto mt-10 md:mt-16">Our <span class="text-yellow"> Process</span></h2>
-          <div class="grid grid-cols-4 gap-3 font-normal text-xsm md:text-[22px] mt-4 md:mt-6">
+          <!-- <div class="grid grid-cols-4 gap-3 font-normal text-xsm md:text-[22px] mt-4 md:mt-6">
             <div class="flex items-center justify-center gap-4">
               <span>Define Goals & objectives</span> <i class="fa-solid fa-angles-right text-[#ED9C0098]"></i>
             </div>
@@ -292,7 +280,8 @@
             <div class="flex items-center justify-center gap-4">
             <i class="fa-solid fa-angles-left text-[#ED9C0098]"></i> <span>UI/UX <br/> Deign Principles</span>
             </div>
-          </div>
+          </div> -->
+          <img src="images/process.png" alt="" class="mt-5">
           <div class="text-2xl md:text-[32px] font-circular text-center leading-tight mt-20">A Proven path to Higher <span class="relative md:after:content-[''] md:after:absolute after:w-[101%] after:h-[12px] after:bg-[#ED9C0040] after:bottom-0 after:-left-1">Conversion & unstoppable Growth.</span>
           </div>
           <div class="grid md:grid-cols-2 items-start gap-3 md:gap-5 max-w-[980px] mx-auto mt-6 md:mt-12">
@@ -789,6 +778,8 @@
       </div>
     </section>
 
+    <a href="#" id="fixed-button" class="hidden max-lg:w-full fixed bottom-0 lg:bottom-4 left-1/2 -translate-x-1/2 z-[20] shadow-custom uppercase bg-yellow text-blue rounded-tl-2xl rounded-tr-2xl lg:rounded-full font-bold py-3 px-5 md:py-7 md:px-20 mt-6 md:mt-12 text-lg md:text-xl lg:border lg:border-white hover:bg-white hover:text-yellow transition duration-300 ease-in-out text-center">Book a free discovery call</a>
+
     
     <script type="module">
       import KeenSlider from 'https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/+esm'
@@ -873,6 +864,10 @@
         const openPopupButton = document.getElementById('open-popup-button');
         const closePopupButton = document.getElementById('close-popup-button');
         const popupModal = document.getElementById('popup-modal');
+        // Show Popup 2 seconds after Page Load
+        setTimeout(() => {
+            popupModal.classList.remove('hidden');
+        }, 2000); // 2000 milliseconds = 2 seconds
 
         // Open Popup
         openPopupButton.addEventListener('click', () => {
@@ -890,8 +885,21 @@
                 popupModal.classList.add('hidden');
             }
         });
-    });
+      })
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          const scrollButton = document.getElementById('fixed-button');
 
-     </script>
+          // Hide/Show the button based on scroll position
+          window.addEventListener('scroll', () => {
+              if (window.scrollY > 500) {
+                  scrollButton.classList.remove('hidden');
+              } else {
+                  scrollButton.classList.add('hidden');
+              }
+          });
+      });
+    </script>
 </body>
 </html>

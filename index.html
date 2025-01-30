@@ -895,5 +895,59 @@
           });
       });
     </script>
+
+    <!-- Image zoom on mobile -->
+
+    <script>
+
+      let image = document.getElementById("zoom-image");
+      let scale = 1; // Initial scale factor
+
+      // Set up pinch-to-zoom functionality
+      image.addEventListener("touchstart", handleTouchStart, false);
+      image.addEventListener("touchmove", handleTouchMove, false);
+      image.addEventListener("touchend", handleTouchEnd, false);
+
+      let touchStartDistance = 0;
+
+      function handleTouchStart(event) {
+        if (event.touches.length === 2) {
+          // Calculate the initial distance between the two touch points
+          touchStartDistance = getDistance(event.touches[0], event.touches[1]);
+        }
+      }
+
+      function handleTouchMove(event) {
+        if (event.touches.length === 2) {
+          // Calculate the new distance between the touch points
+          let touchEndDistance = getDistance(event.touches[0], event.touches[1]);
+
+          // Calculate scale based on the change in distance
+          scale *= touchEndDistance / touchStartDistance;
+          scale = Math.max(1, Math.min(scale, 3)); // Limit zoom scale between 1x and 3x
+
+          // Apply the scale transform to the image
+          image.style.transform = `scale(${scale})`;
+
+          // Update the touch start distance
+          touchStartDistance = touchEndDistance;
+        }
+      }
+
+      function handleTouchEnd(event) {
+        if (event.touches.length < 2) {
+          // Reset scale when touch ends
+          touchStartDistance = 0;
+        }
+      }
+
+      // Function to calculate distance between two touch points
+      function getDistance(touch1, touch2) {
+        let dx = touch2.pageX - touch1.pageX;
+        let dy = touch2.pageY - touch1.pageY;
+        return Math.sqrt(dx * dx + dy * dy);
+      }
+
+    </script>
 </body>
 </html>

@@ -15,6 +15,11 @@
         font-family: circular-std;
         src: url(fonts/circular-std-medium-500.ttf);
     }
+    @media only screen and (min-width: 768px){
+      a#zoom-image {
+          pointer-events: none;
+      }
+    }
   </style>
   <script>
     tailwind.config = {
@@ -82,7 +87,7 @@
             <div class="text-lg md:text-xl text-left font-medium leading-normal">Every dollar that you invest in CRO today will make you <span class="relative font-bold after:content-[''] after:absolute after:w-[98%] after:h-[10px] after:bg-[#ED9C0040] after:bottom-0 after:left-0 z-10 after:-z-10"> $100 over the next 12 months…</span> and then another $100 the year after that… and then another $100 the year after that.</div>
             <div class="text-lg md:text-xl text-left font-medium mt-4 leading-normal">With a high-converting store, you’re going to see a sharp and immediate drop in customer acquisition costs, coupled with a significant increase in your average order value. Now, both of these effects combined will make your ad campaigns truly work for you.  </div>
           </div>
-          <img src="images/chart.png" alt="" class="rounded-3xl">
+          <a href="javascript:void(0)" id="zoom-image"><img src="images/chart.png" alt="" class="rounded-3xl"></a>
           <img src="images/arrow.gif" class="absolute -top-6 -left-4 md:-left-6 w-[60px] md:w-[90px] rotate-90" alt="">
       </div>
     </section>
@@ -774,6 +779,22 @@
               </form>
           </div>
       </div>
+
+      <!-- zoom image modal -->
+        <div id="myModal" class="hidden fixed inset-0 bg-[#00000090] flex items-center justify-center z-50">
+          
+          <div class="bg-white rounded-2xl px-6 md:px-8 py-10 w-full mx-4 max-w-[550px] shadow-lg relative">
+              <!-- Close Button -->
+              <button id="close-popup"
+                class="absolute top-1 right-3 text-2xl text-gray-700 hover:text-gray-600">
+                &times;
+              </button>
+            <!-- Popup Content -->
+            
+            <img class="modal-content" src="images/chart.png" alt=""  id="imgPopup">
+
+          </div>
+        </div>
     
     <script type="module">
       import KeenSlider from 'https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/+esm'
@@ -896,58 +917,36 @@
       });
     </script>
 
-    <!-- Image zoom on mobile -->
-
     <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const openImagePopup = document.getElementById('zoom-image');
+            const closePopup = document.getElementById('close-popup');
+            const myModal = document.getElementById('myModal');
+            // Show Popup 2 seconds after Page Load
+            setTimeout(() => {
+                popupModal.classList.remove('hidden');
+                myModal.classList.remove('hidden');
+            }, 2000); // 2000 milliseconds = 2 seconds
 
-      let image = document.getElementById("zoom-image");
-      let scale = 1; // Initial scale factor
+            // Open Popup
+        openImagePopup.addEventListener('click', () => {
+                myModal.classList.remove('hidden');
+            });
 
-      // Set up pinch-to-zoom functionality
-      image.addEventListener("touchstart", handleTouchStart, false);
-      image.addEventListener("touchmove", handleTouchMove, false);
-      image.addEventListener("touchend", handleTouchEnd, false);
-
-      let touchStartDistance = 0;
-
-      function handleTouchStart(event) {
-        if (event.touches.length === 2) {
-          // Calculate the initial distance between the two touch points
-          touchStartDistance = getDistance(event.touches[0], event.touches[1]);
-        }
-      }
-
-      function handleTouchMove(event) {
-        if (event.touches.length === 2) {
-          // Calculate the new distance between the touch points
-          let touchEndDistance = getDistance(event.touches[0], event.touches[1]);
-
-          // Calculate scale based on the change in distance
-          scale *= touchEndDistance / touchStartDistance;
-          scale = Math.max(1, Math.min(scale, 3)); // Limit zoom scale between 1x and 3x
-
-          // Apply the scale transform to the image
-          image.style.transform = `scale(${scale})`;
-
-          // Update the touch start distance
-          touchStartDistance = touchEndDistance;
-        }
-      }
-
-      function handleTouchEnd(event) {
-        if (event.touches.length < 2) {
-          // Reset scale when touch ends
-          touchStartDistance = 0;
-        }
-      }
-
-      // Function to calculate distance between two touch points
-      function getDistance(touch1, touch2) {
-        let dx = touch2.pageX - touch1.pageX;
-        let dy = touch2.pageY - touch1.pageY;
-        return Math.sqrt(dx * dx + dy * dy);
-      }
-
+            // Close Popup
+        closePopup.addEventListener('click', () => {
+                myModal.classList.add('hidden');
+            });
+        
+            // Close Popup when clicking outside
+        
+        myModal.addEventListener('click', (event) => {
+                if (event.target === myModal) {
+                    myModal.classList.add('hidden');
+                }
+            });
+      })
     </script>
+    
 </body>
 </html>

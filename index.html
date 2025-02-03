@@ -20,16 +20,9 @@
           pointer-events: none;
       }
     }
-    #zoomContainer {
-        overflow: hidden;
-        position: relative;
-        touch-action: pinch-zoom; /* Enables pinch zoom */
-    }
 
     #zoomable-image {
-        width: 100%;
-        transition: transform 0.25s ease; /* Smooth transition */
-        transform-origin: center center; /* Center the zoom */
+      transition: transform 0.2s ease;
     }
 
   </style>
@@ -1072,37 +1065,39 @@
     //         modal.classList.add("hidden");
     //     });
     // });
-    let scale = 1;
-let startDistance = 0;
-const image = document.getElementById('zoomable-image');
+    $(document).ready(function () {
+        let scale = 1;
+        let startDistance = 0;
+        const image = $('#zoomable-image');
 
-function getDistance(touches) {
-    const dx = touches[0].clientX - touches[1].clientX;
-    const dy = touches[0].clientY - touches[1].clientY;
-    return Math.sqrt(dx * dx + dy * dy);
-}
+        image.on('touchstart', function (e) {
+            if (e.originalEvent.touches.length === 2) {
+                startDistance = getDistance(e.originalEvent.touches);
+            }
+        });
 
-image.addEventListener('touchstart', (e) => {
-    if (e.touches.length === 2) {
-        startDistance = getDistance(e.touches);
-    }
-}, false);
+        image.on('touchmove', function (e) {
+            if (e.originalEvent.touches.length === 2) {
+                e.preventDefault(); // Prevent scrolling
+                const currentDistance = getDistance(e.originalEvent.touches);
+                scale *= currentDistance / startDistance;
+                startDistance = currentDistance;
+                image.css('transform', `scale(${scale})`);
+            }
+        });
 
-image.addEventListener('touchmove', (e) => {
-    if (e.touches.length === 2) {
-        e.preventDefault(); // Prevent scrolling
-        const currentDistance = getDistance(e.touches);
-        scale *= currentDistance / startDistance;
-        startDistance = currentDistance;
-        image.style.transform = `scale(${scale})`;
-    }
-}, false);
+        image.on('touchend', function () {
+            scale = Math.max(scale, 1); // Ensure scale doesn't go below 1
+            image.css('transform', `scale(${scale})`);
+        });
 
-image.addEventListener('touchend', (e) => {
-    if (e.touches.length < 2) {
-        startDistance = 0; // Reset the distance
-    }
-}, false);
+        function getDistance(touches) {
+            const dx = touches[0].clientX - touches[1].clientX;
+            const dy = touches[0].clientY - touches[1].clientY;
+            return Math.sqrt(dx * dx + dy * dy);
+        }
+    });
+
 
     </script>
 

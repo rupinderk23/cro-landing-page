@@ -795,7 +795,7 @@
           </button>
 
           <!-- Popup Content -->
-          <div id="zoomContainer" class="overflow-hidden relative min-h-[400px] flex justify-center items-center">
+          <div id="zoomContainer" class="overflow-hidden relative min-h-[300px] flex justify-center items-center">
             <img class="modal-content" 
                 src="images/chart.png" 
                 alt="" 
@@ -1068,7 +1068,6 @@
     $(document).ready(function () {
         let scale = 1;
         let startDistance = 0;
-        const zoomFactor = 1.5; // Zoom in factor
         const image = $('#zoomable-image');
 
         image.on('touchstart', function (e) {
@@ -1097,10 +1096,6 @@
             const dy = touches[0].clientY - touches[1].clientY;
             return Math.sqrt(dx * dx + dy * dy);
         }
-        image.on('dblclick', function () {
-          scale = (scale === 1) ? zoomFactor : 1; // Toggle between zoomed and normal
-          image.css('transform', `scale(${scale})`);
-      });
     });
 
 

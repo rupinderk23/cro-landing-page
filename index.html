@@ -795,7 +795,7 @@
           </button>
 
           <!-- Popup Content -->
-          <div id="zoomContainer" class="overflow-hidden relative min-h-[350px] flex justify-center items-center">
+          <div id="zoomContainer" class="overflow-hidden relative min-h-[400px] flex justify-center items-center">
             <img class="modal-content" 
                 src="images/chart.png" 
                 alt="" 
@@ -1065,42 +1065,6 @@
     //         modal.classList.add("hidden");
     //     });
     // });
-    $(document).ready(function () {
-    let scale = 1;
-    let startDistance = 0;
-    const image = $('#zoomable-image');
-
-    image.on('touchstart', function (e) {
-        if (e.originalEvent.touches.length === 2) {
-            startDistance = getDistance(e.originalEvent.touches);
-            e.preventDefault(); // Prevent default zoom
-        }
-    });
-
-    image.on('touchmove', function (e) {
-        if (e.originalEvent.touches.length === 2) {
-            e.preventDefault(); // Prevent default zoom
-            const currentDistance = getDistance(e.originalEvent.touches);
-            scale *= currentDistance / startDistance;
-            startDistance = currentDistance;
-            image.css('transform', `scale(${scale})`);
-        }
-    });
-
-    image.on('touchend', function () {
-        scale = Math.max(scale, 1); // Ensure scale doesn't go below 1
-        image.css('transform', `scale(${scale})`);
-    });
-
-    function getDistance(touches) {
-        const dx = touches[0].clientX - touches[1].clientX;
-        const dy = touches[0].clientY - touches[1].clientY;
-        return Math.sqrt(dx * dx + dy * dy);
-    }
-});
-
-
-
     </script>
 
 </body>

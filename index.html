@@ -783,7 +783,7 @@
       <!-- zoom image modal -->
         <div id="myModal" class="hidden fixed inset-0 bg-[#00000090] flex items-center justify-center z-50">
           
-          <div class="bg-white rounded-2xl px-6 md:px-8 py-10 w-full mx-4 max-w-[550px] shadow-lg relative">
+          <div class="bg-white px-3 md:px-8 py-10 w-full max-w-[550px] shadow-lg relative">
               <!-- Close Button -->
               <button id="close-popup"
                 class="absolute top-1 right-3 text-2xl text-gray-700 hover:text-gray-600">
@@ -791,7 +791,13 @@
               </button>
             <!-- Popup Content -->
             
-            <img class="modal-content" src="images/chart.png" alt=""  id="imgPopup">
+            <div id="zoomContainer" class="overflow-hidden touch-pan-x touch-pan-y relative">
+              <img class="modal-content transform transition-transform cursor-grab" 
+                  src="images/chart.png" 
+                  alt="" 
+                  id="imgPopup"
+                  style="transform-origin: center;">
+            </div>
 
           </div>
         </div>
@@ -946,6 +952,101 @@
                 }
             });
       })
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const imgPopup = document.getElementById("imgPopup");
+        const modal = document.getElementById("myModal");
+        let scale = 1, translateX = 0, translateY = 0;
+        let startX = 0, startY = 0, isPanning = false;
+
+        // Pinch to Zoom (Mobile)
+        let initialDistance = 0;
+        let initialScale = 1;
+
+        imgPopup.addEventListener("touchstart", (e) => {
+            if (e.touches.length === 2) {
+                initialDistance = Math.hypot(
+                    e.touches[0].clientX - e.touches[1].clientX,
+                    e.touches[0].clientY - e.touches[1].clientY
+                );
+                initialScale = scale;
+            } else if (e.touches.length === 1 && scale > 1) {
+                isPanning = true;
+                startX = e.touches[0].clientX - translateX;
+                startY = e.touches[0].clientY - translateY;
+            }
+        });
+
+        imgPopup.addEventListener("touchmove", (e) => {
+            if (e.touches.length === 2) {
+                const newDistance = Math.hypot(
+                    e.touches[0].clientX - e.touches[1].clientX,
+                    e.touches[0].clientY - e.touches[1].clientY
+                );
+                scale = Math.max(1, Math.min(initialScale * (newDistance / initialDistance), 3)); // Limit zoom
+                updateTransform();
+                e.preventDefault();
+            } else if (isPanning && e.touches.length === 1) {
+                translateX = e.touches[0].clientX - startX;
+                translateY = e.touches[0].clientY - startY;
+                updateTransform();
+            }
+        });
+
+        imgPopup.addEventListener("touchend", () => {
+            isPanning = false;
+        });
+
+        // Scroll Zoom (Desktop)
+        imgPopup.addEventListener("wheel", (e) => {
+            e.preventDefault();
+            const zoomFactor = e.deltaY * -0.01;
+            scale = Math.max(1, Math.min(scale + zoomFactor, 3)); // Zoom limits
+            updateTransform();
+        });
+
+        // Drag to Pan (Desktop)
+        imgPopup.addEventListener("mousedown", (e) => {
+            if (scale > 1) {
+                isPanning = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                imgPopup.style.cursor = "grabbing";
+            }
+        });
+
+        imgPopup.addEventListener("mousemove", (e) => {
+            if (isPanning) {
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                updateTransform();
+            }
+        });
+
+        imgPopup.addEventListener("mouseup", () => {
+            isPanning = false;
+            imgPopup.style.cursor = "grab";
+        });
+
+        imgPopup.addEventListener("mouseleave", () => {
+            isPanning = false;
+        });
+
+        function updateTransform() {
+            imgPopup.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+        }
+
+        // Reset on Close
+        document.getElementById("close-popup").addEventListener("click", () => {
+            scale = 1;
+            translateX = 0;
+            translateY = 0;
+            updateTransform();
+            modal.classList.add("hidden");
+        });
+    });
     </script>
     
 </body>

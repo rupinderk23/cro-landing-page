@@ -1047,6 +1047,22 @@
             isPanning = false;
         });
 
+        // Double Tap Zoom (Mobile)
+        let lastTap = 0;
+        imgPopup.addEventListener("dblclick", (e) => {
+            const currentTime = new Date().getTime();
+            const tapDelay = 300; // Adjust delay as necessary
+
+            if (currentTime - lastTap < tapDelay) {
+                // Double-tap detected
+                scale = scale === 1 ? 2 : 1; // Toggle between zoom levels
+                translateX = 0; // Reset translation
+                translateY = 0; // Reset translation
+                updateTransform();
+            }
+            lastTap = currentTime;
+        });
+
         function updateTransform() {
             imgPopup.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
         }

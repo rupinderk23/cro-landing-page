@@ -781,27 +781,23 @@
       </div>
 
       <!-- zoom image modal -->
-        <div id="myModal" class="hidden fixed inset-0 bg-[#00000090] flex items-center justify-center z-50">
-          
+      <div id="myModal" class="hidden fixed inset-0 bg-[#00000090] flex items-center justify-center z-50">
           <div class="bg-white px-3 md:px-8 py-10 w-full max-w-[550px] shadow-lg relative">
               <!-- Close Button -->
-              <button id="close-popup"
-                class="absolute top-1 right-3 text-2xl text-gray-700 hover:text-gray-600">
-                &times;
+              <button id="close-popup" class="absolute top-1 right-3 text-2xl text-gray-700 hover:text-gray-600">
+                  &times;
               </button>
-            <!-- Popup Content -->
-            
-            <div id="zoomContainer" class="overflow-hidden touch-pan-x touch-pan-y relative min-h-[60vh] flex justify-center items-center">
-              <img class="modal-content transform transition-transform cursor-grab" 
-                  src="images/chart.png" 
-                  alt="" 
-                  id="imgPopup"
-                  style="transform-origin: center;">
-            </div>
-
+              <!-- Popup Content -->
+              <div id="zoomContainer" class="overflow-hidden relative min-h-[60vh] flex justify-center items-center">
+                  <img class="modal-content transform transition-transform cursor-grab will-change-transform"
+                      src="images/chart.png"
+                      alt=""
+                      id="imgPopup"
+                      style="transform-origin: center;">
+              </div>
           </div>
-        </div>
-    
+      </div>
+
     <script type="module">
       import KeenSlider from 'https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/+esm'
     
@@ -960,6 +956,8 @@
         const modal = document.getElementById("myModal");
         let scale = 1, translateX = 0, translateY = 0;
         let startX = 0, startY = 0, isPanning = false;
+        let isUpdating = false;
+        let zoomTimeout;
 
         function disableScroll() {
             document.body.style.overflow = "hidden";
@@ -1014,9 +1012,12 @@
         // Scroll Zoom (Desktop)
         imgPopup.addEventListener("wheel", (e) => {
             e.preventDefault();
-            const zoomFactor = e.deltaY * -0.01;
-            scale = Math.max(1, Math.min(scale + zoomFactor, 3)); // Zoom limits
-            updateTransform();
+            clearTimeout(zoomTimeout);
+            zoomTimeout = setTimeout(() => {
+                const zoomFactor = e.deltaY * -0.01;
+                scale = Math.max(1, Math.min(scale + zoomFactor, 3)); // Zoom limits
+                updateTransform();
+            }, 50); // Adjust delay as necessary
         });
 
         // Drag to Pan (Desktop)
@@ -1054,7 +1055,6 @@
             const tapDelay = 300; // Adjust delay as necessary
 
             if (currentTime - lastTap < tapDelay) {
-                // Double-tap detected
                 scale = scale === 1 ? 2 : 1; // Toggle between zoom levels
                 translateX = 0; // Reset translation
                 translateY = 0; // Reset translation
@@ -1065,7 +1065,13 @@
         });
 
         function updateTransform() {
-            imgPopup.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+            if (!isUpdating) {
+                requestAnimationFrame(() => {
+                    imgPopup.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+                    isUpdating = false;
+                });
+                isUpdating = true;
+            }
         }
 
         // Reset on Close
@@ -1078,6 +1084,7 @@
             modal.classList.add("hidden");
         });
     });
+
     </script>
 
 </body>

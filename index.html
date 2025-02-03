@@ -797,7 +797,7 @@
             <img class="modal-content transform transition-transform cursor-grab" 
                 src="images/chart.png" 
                 alt="" 
-                id="imgPopup"
+                id="zoomable-image"
                 style="transform-origin: center;">
           </div>
         </div>
@@ -954,6 +954,7 @@
             });
       })
     </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
 
     <script>
     //   document.addEventListener("DOMContentLoaded", function () {
@@ -1062,6 +1063,23 @@
     //         modal.classList.add("hidden");
     //     });
     // });
+    const image = document.getElementById('zoomable-image');
+      const hammer = new Hammer(image);
+
+      let scale = 1;
+      let lastScale = 1;
+
+      hammer.get('pinch').set({ enable: true });
+
+      hammer.on('pinch', (event) => {
+          scale = lastScale * event.scale;
+          image.style.transform = `scale(${scale})`;
+      });
+
+      hammer.on('pinchend', (event) => {
+          lastScale = scale;
+      });
+
     </script>
 
 </body>

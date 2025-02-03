@@ -956,8 +956,6 @@
         const modal = document.getElementById("myModal");
         let scale = 1, translateX = 0, translateY = 0;
         let startX = 0, startY = 0, isPanning = false;
-        let isUpdating = false;
-        let zoomTimeout;
 
         function disableScroll() {
             document.body.style.overflow = "hidden";
@@ -1012,12 +1010,9 @@
         // Scroll Zoom (Desktop)
         imgPopup.addEventListener("wheel", (e) => {
             e.preventDefault();
-            clearTimeout(zoomTimeout);
-            zoomTimeout = setTimeout(() => {
-                const zoomFactor = e.deltaY * -0.01;
-                scale = Math.max(1, Math.min(scale + zoomFactor, 3)); // Zoom limits
-                updateTransform();
-            }, 50); // Adjust delay as necessary
+            const zoomFactor = e.deltaY * -0.01;
+            scale = Math.max(1, Math.min(scale + zoomFactor, 3)); // Zoom limits
+            updateTransform();
         });
 
         // Drag to Pan (Desktop)
@@ -1048,30 +1043,8 @@
             isPanning = false;
         });
 
-        // Double Tap Zoom (Mobile)
-        let lastTap = 0;
-        imgPopup.addEventListener("dblclick", (e) => {
-            const currentTime = new Date().getTime();
-            const tapDelay = 300; // Adjust delay as necessary
-
-            if (currentTime - lastTap < tapDelay) {
-                scale = scale === 1 ? 2 : 1; // Toggle between zoom levels
-                translateX = 0; // Reset translation
-                translateY = 0; // Reset translation
-                updateTransform();
-                disableScroll(); // Disable scroll during zoom
-            }
-            lastTap = currentTime;
-        });
-
         function updateTransform() {
-            if (!isUpdating) {
-                requestAnimationFrame(() => {
-                    imgPopup.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-                    isUpdating = false;
-                });
-                isUpdating = true;
-            }
+            imgPopup.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
         }
 
         // Reset on Close
@@ -1084,7 +1057,6 @@
             modal.classList.add("hidden");
         });
     });
-
     </script>
 
 </body>

@@ -955,11 +955,21 @@
     </script>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
+     document.addEventListener("DOMContentLoaded", function () {
         const imgPopup = document.getElementById("imgPopup");
         const modal = document.getElementById("myModal");
         let scale = 1, translateX = 0, translateY = 0;
         let startX = 0, startY = 0, isPanning = false;
+
+        function disableScroll() {
+            document.body.style.overflow = "hidden";
+            document.documentElement.style.overscrollBehavior = "contain";
+        }
+
+        function enableScroll() {
+            document.body.style.overflow = "";
+            document.documentElement.style.overscrollBehavior = "";
+        }
 
         // Pinch to Zoom (Mobile)
         let initialDistance = 0;
@@ -976,6 +986,7 @@
                 isPanning = true;
                 startX = e.touches[0].clientX - translateX;
                 startY = e.touches[0].clientY - translateY;
+                disableScroll();
             }
         });
 
@@ -992,6 +1003,7 @@
                 translateX = e.touches[0].clientX - startX;
                 translateY = e.touches[0].clientY - startY;
                 updateTransform();
+                e.preventDefault(); // Stop page scrolling
             }
         });
 
@@ -1014,6 +1026,7 @@
                 startX = e.clientX - translateX;
                 startY = e.clientY - translateY;
                 imgPopup.style.cursor = "grabbing";
+                disableScroll();
             }
         });
 
@@ -1044,6 +1057,7 @@
             translateX = 0;
             translateY = 0;
             updateTransform();
+            enableScroll();
             modal.classList.add("hidden");
         });
     });

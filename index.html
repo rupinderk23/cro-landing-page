@@ -791,12 +791,13 @@
               </button>
             <!-- Popup Content -->
             
-            <div id="zoomContainer" class="overflow-x-auto relative flex justify-start items-center">
-              <img class="modal-content transform transition-transform cursor-grab min-w-[750px] max-w-none" 
+            <div id="zoomContainer" class="overflow-hidden touch-pan-x touch-pan-y relative min-h-[60vh] flex justify-center items-center">
+              <img class="modal-content transform transition-transform cursor-grab" 
                   src="images/chart.png" 
                   alt="" 
-                  id="imgPopup">
-          </div>
+                  id="imgPopup"
+                  style="transform-origin: center;">
+            </div>
 
           </div>
         </div>
@@ -953,7 +954,7 @@
       })
     </script>
 
-    <!-- <script>
+    <script>
       document.addEventListener("DOMContentLoaded", function () {
           const imgPopup = document.getElementById("imgPopup");
           const modal = document.getElementById("myModal");
@@ -1077,7 +1078,7 @@
               modal.classList.add("hidden");
           });
       });
-    </script> -->
+    </script>
 
 </body>
 </html>
